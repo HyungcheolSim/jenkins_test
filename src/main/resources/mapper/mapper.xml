@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.dto.MembersDAO">
+    <select id="getAllMembers" resultType="com.example.demo.dto.Member">
+        SELECT * FROM s_user
+    </select>
+    <select id="getMemberByKey" resultType="com.example.demo.dto.Member">
+        SELECT * FROM s_user WHERE user_key=#{user_key}
+    </select>
+    <insert id="insertMember" parameterType="com.example.demo.dto.Member" useGeneratedKeys="true" keyProperty="user_key">
+        INSERT INTO
+            s_user(user_id,user_gender,user_birthday,user_email,user_photo,user_password,user_password_dt,user_height,user_weight,user_target_weight,user_login_code,user_name,user_delete_yn,user_create_dt,user_delete_dt)
+        VALUES
+            (#{user_id},#{user_gender},#{user_birthday},#{user_email},#{user_photo},#{user_password},#{user_password_dt},#{user_height},#{user_weight},#{user_target_weight},#{user_login_code},#{user_name},#{user_delete_yn},#{user_create_dt},#{user_delete_dt})
+    </insert>
+    <delete id="deleteMember" parameterType="int">
+        DELETE FROM s_user WHERE user_key=#{user_key}
+    </delete>
+    <update id="updateMember">
+        UPDATE s_user
+        SET user_id=#{s_user.user_id},user_gender=#{s_user.user_gender},user_birthday=#{s_user.user_birthday},user_email=#{s_user.user_email},user_photo=#{s_user.user_photo},user_password=#{s_user.user_password},user_password_dt=#{s_user.user_password_dt},user_create_dt=#{s_user.user_create_dt},user_height=#{s_user.user_height},user_weight=#{s_user.user_weight},user_target_weight=#{s_user.user_target_weight},user_login_code=#{s_user.user_login_code},user_name=#{s_user.user_name},user_delete_yn=#{s_user.user_delete_yn},user_delete_dt=#{s_user.user_delete_dt}
+        WHERE user_key=#{user_key}
+
+    </update>
+</mapper>
