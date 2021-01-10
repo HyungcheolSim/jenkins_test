@@ -2,10 +2,11 @@ package com.example.demo.service;
 
 
 import com.example.demo.dto.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
+@Repository
 public interface MembersService {
     List<Member> getAllMembers();
     Member getMemberByKey(Integer user_key);
